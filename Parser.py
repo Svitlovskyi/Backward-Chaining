@@ -53,6 +53,10 @@ class Parser:
                 return list(line.replace("?",""))
         raise Exception("No goals found")
 
+    ''' private method 
+        @return: facts
+        @input: filelines
+    '''
     def __get_facts_lines(self, lines):
         for line in lines:
             if line[0] == "=":

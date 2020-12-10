@@ -1,7 +1,7 @@
 import re
 from Nodes import *
 from Operator import *
-
+from Solver import *
 
 class Node_Store_Utils:
     # operator symbols

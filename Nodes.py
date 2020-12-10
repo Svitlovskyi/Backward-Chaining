@@ -3,12 +3,15 @@
 
 class NodeStore:
 
-    def __init__(self):
-        self.atom_node_list = []
+    def __init__(self, initialized_unique_atoms):
+        self.atom_node_list = initialized_unique_atoms
 
     '''@input: Node
         add node to node store list
     '''
+    def set_child(self, name, child):
+        index = self.get_node_index(name)
+        self.atom_node_list[index].child = child
 
     def add_node(self, name, state):
         atom_node = AtomNode(name, state)
@@ -41,6 +44,8 @@ class NodeStore:
                 return node
 
         raise Exception("Node with '{}', doesnt exists".format(name))
+
+
 
 
 class Node:
