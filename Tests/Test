@@ -7,19 +7,17 @@
 
 #if ! before operator -> error.
 
-#=CBZ
-#?G
+A ^ B => C
+# A and B are True, so C is False
+D ^ E => F
+# Only D is True, so F is True
+G ^ H => I
+# Only H is True, so I is True
+J ^ K => L
+ # J and K are False, so J is False
 
+=ABDH
+?CFIL
 
-B => A
-D + E => B
-G + H => F
-I + J => G
-G => H
-L + M => K
-O + P => L
-N + Z => M
-E => O
-
-=DEIJPNZ
-?AFKP
+# assertions
+# =ABDHFI

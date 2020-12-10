@@ -1,6 +1,6 @@
-from RulesUtils import RulesUtils
-from Solver import Solver
-from Nodes import NodeStore
+from BackwardChaining.Utils.RulesUtils import RulesUtils
+from BackwardChaining.Utils.Solver import Solver
+
 
 class Backward_Chaining:
     def __init__(self, node_store, goals):
@@ -24,7 +24,7 @@ class Backward_Chaining:
                         i = solver.solve_rule(logical_operation)
                         return i
                     elif unknown_node.child == []:
-                        raise Exception("Not enough data")
+                        self.node_store.set_state(unknown_node.name, False)
                     else:
                         searched_subgoal_value = self.backward_chaining(unknown_node.name)
                         self.node_store.set_state(unknown_node.name, searched_subgoal_value)

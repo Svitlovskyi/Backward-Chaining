@@ -1,7 +1,7 @@
 import re
-from Nodes import *
-from Operator import *
-from Solver import *
+from BackwardChaining.Models.Nodes import *
+from BackwardChaining.Models.NodeStore import *
+
 
 class Node_Store_Utils:
     # operator symbols
