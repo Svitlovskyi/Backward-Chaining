@@ -3,7 +3,7 @@ from Nodes import *
 from Operator import *
 
 
-class Utils:
+class Node_Store_Utils:
     # operator symbols
     __operators = ["+", "=>", "|", "^", "!"]
 
@@ -21,26 +21,18 @@ class Utils:
 
 
 
-    def __initialize_child(self, node_store):
-        for node in node_store.atom_node_list:
-            print(node.child)
-            if len(node.child) != 0:
-                new_child = []
-                for node_name in node.child:
-                    if node_name in self.__operators:
-                        connector_node = ConnectorNode(Operator(node_name))
-                        new_child.append(connector_node)
-                        continue
-                    new_child.append(node_store.get_node(node_name))
-                node_store.set_child(node.name, new_child)
-        # initialized_child = []
-        # if len(child) != 0:
-        #     for node_name in child:
-        #         if node_name in self.__operators:
-        #             connector_node = ConnectorNode(Operator(node_name))
-        #             initialized_child.append(connector_node)
-        #             continue
-        #         initialized_child.append(node_store.get_node(node_name))
+    # def __initialize_child(self, node_store):
+    #     for node in node_store.atom_node_list:
+    #         print(node.child)
+    #         if len(node.child) != 0:
+    #             new_child = []
+    #             for node_name in node.child:
+    #                 if node_name in self.__operators:
+    #                     connector_node = ConnectorNode(Operator(node_name))
+    #                     new_child.append(connector_node)
+    #                     continue
+    #                 new_child.append(node_store.get_node(node_name))
+    #             node_store.set_child(node.name, new_child)
 
     '''private
         @input: rules list 2d array
