@@ -1,9 +1,0 @@
-#AND conditions and conclusions
-#The program can handle basic AND conditions, and AND conclusions.
-
-A + B => E
-C | D => G
-
-=CB
-
-?G

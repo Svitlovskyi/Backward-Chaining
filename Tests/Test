@@ -1,0 +1,25 @@
+#AND conditions and conclusions
+#The program can handle basic AND conditions, and AND conclusions.
+
+#Z => A
+#! A + B => K
+#! C | K => G
+
+#if ! before operator -> error.
+
+#=CBZ
+#?G
+
+
+B => A
+D + E => B
+G + H => F
+I + J => G
+G => H
+L + M => K
+O + P => L
+N + Z => M
+E => O
+
+=DEIJPNZ
+?AFKP
