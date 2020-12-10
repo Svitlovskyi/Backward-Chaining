@@ -45,6 +45,9 @@ class NodeStore:
 
         raise Exception("Node with '{}', doesnt exists".format(name))
 
+    def set_state(self, name, state):
+        index = self.get_node_index(name)
+        self.atom_node_list[index].state = state
 
 
 

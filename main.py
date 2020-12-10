@@ -12,15 +12,22 @@ class Backward_Chaining:
     def search_goal(self, goal):
         for node in node_store.atom_node_list:
             if node.name == goal:
-                child = node.child
-                rule_utils = RulesUtils()
-                is_all_node_know = rule_utils.check_is_all_node_is_known(child, self.node_store)
-                if is_all_node_know:
-                    solver = Solver()
-                    logical_operation = rule_utils.transform_child_to_logical_operation(child, self.node_store)
-                    i = solver.solve_rule(logical_operation)
+                while True:
+                    child = node.child
+                    rule_utils = RulesUtils()
+                    is_all_node_know, unknown_node = rule_utils.check_is_all_node_is_known(child, self.node_store)
+                    if is_all_node_know:
+                        solver = Solver()
+                        logical_operation = rule_utils.transform_child_to_logical_operation(child, self.node_store)
+                        i = solver.solve_rule(logical_operation)
+                        return i
+                    elif unknown_node.child == []:
+                        raise Exception("Not enough data")
+                    else:
+                        searched_subgoal_value = self.search_goal(unknown_node.name)
+                        print(searched_subgoal_value)
 
-                print(i)
+                        self.node_store.set_state(unknown_node.name, searched_subgoal_value)
                 # TODO: SOLVE
 
 
@@ -30,7 +37,8 @@ if __name__ == '__main__':
     utils = Node_Store_Utils()
     node_store = utils.initialize_atom_nodes_store_from_rules(rules, facts)
     backward_chaining = Backward_Chaining(node_store, goals)
-    backward_chaining.search_goal(backward_chaining.goals[0])
+    result = backward_chaining.search_goal(backward_chaining.goals[0])
+    print(result)
 
 
 
