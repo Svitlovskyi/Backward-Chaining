@@ -41,7 +41,7 @@ class Solver:
 
                 solved_brackets_value = self.solve_rule(brackets_values)
                 rule[index] = solved_brackets_value
-        return rule
+                return rule
 
     '''@input: rule
        @return: rule with solved not operator
