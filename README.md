@@ -5,8 +5,8 @@ A => B,  A inference B <br>
 A + B => C, A and B inference C <br>
 A | B => C, A or B inference C <br>
 A ^ B => C, A xor B inference C <br>
-A + !B => C, A and not B inference C <br>
-! A => B, Not A infence B <br>
+A + ! B => C, A and not B inference C <br>
+! A => B, Not A inference B <br>
 Example: <br>
 A + B => C
 C | E => D
