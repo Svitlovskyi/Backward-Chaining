@@ -4,7 +4,7 @@
 A ^ B + ( D + G + F ) => C
 C | E => L + K
 =ADFG
-?LK
+?L
 #if ! before operator -> error.
 
 

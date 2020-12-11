@@ -14,9 +14,12 @@ if __name__ == '__main__':
     #Solve
     backward_chaining = Backward_Chaining(node_store, goals)
     for i in goals:
-        result = backward_chaining.backward_chaining(i)
+        result, vis = backward_chaining.backward_chaining(i)
         print(result)
-
+        print(vis)
+    # test = ([], ["A"])
+    # array = [x == [] and x=="A" for x in test]
+    # print(all(array))
 
 
 
