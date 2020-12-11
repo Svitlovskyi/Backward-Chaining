@@ -30,13 +30,16 @@ if __name__ == '__main__':
     }
     result = []
     vis = []
-    for key in test:
-        test_result, vis = main_func(key)
-        is_completed = (test_result == test[key])
-        print("test name: {}, completed: {}".format(key, is_completed))
-        print(vis)
-        visual = Visualizer(vis)
-        visual.print_tree()
+    test_result, vis = main_func('complexTest')
+    visual = Visualizer(vis)
+    visual.print_tree()
+    # for key in test:
+    #     test_result, vis = main_func(key)
+    #     is_completed = (test_result == test[key])
+    #     print("test name: {}, completed: {}".format(key, is_completed))
+    #     print(vis)
+    #     visual = Visualizer(vis)
+    #     visual.print_tree()
 
 #TODO: Rules parser check
 
