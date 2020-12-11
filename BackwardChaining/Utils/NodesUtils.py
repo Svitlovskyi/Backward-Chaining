@@ -46,6 +46,14 @@ class Node_Store_Utils:
             rhs, lhs = splitted[0].split(), splitted[1].split()
             if len(lhs) == 1:
                 node_store.set_child(lhs[0], rhs)
+            else:
+                for node in lhs:
+                    if node in ["=>", "|", "^", "!", ")", "("]:
+                        raise Exception("Not valid rules")
+                for node in lhs:
+                    if node != "+":
+                        node_store.set_child(node, rhs)
+
             # TODO: ADD CHILD FOR COMPLEX LHS (A + B, etc)
 
     '''private

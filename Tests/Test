@@ -2,10 +2,9 @@
 #The program can handle basic AND conditions, and AND conclusions.
 # if z is false then A = TRUE
 A ^ B + ( D + G ) => C
-C | E => G
-G => K
-=BAE
-?GCK
+C | E => G + K
+=BA
+?GK
 #if ! before operator -> error.
 
 
