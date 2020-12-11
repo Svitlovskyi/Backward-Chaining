@@ -33,6 +33,8 @@ if __name__ == '__main__':
         test_result, vis = main_func(key)
         is_completed = (test_result == test[key])
         print("test name: {}, completed: {}".format(key, is_completed))
+        print(vis)
 
 
+#TODO: Rules parser check
 

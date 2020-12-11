@@ -10,6 +10,7 @@ class Backward_Chaining:
 
 
     def backward_chaining(self, goal):
+        # search goal
         for node in self.node_store.atom_node_list:
             if node.name == goal:
                 while True:
@@ -17,23 +18,28 @@ class Backward_Chaining:
                     if node.name in child:
                         raise Exception("Prerequisite can't be a consequence at the same time")
 
+                    # check is all values in known
                     rule_utils = RulesUtils()
                     is_all_node_know, unknown_nodes = rule_utils.check_is_all_node_is_known(child, self.node_store)
                     visualize[goal] = child
 
+
                     if node.state != None:
                         return node.state
+                    # solve goal
                     if is_all_node_know:
                         solver = Solver()
                         logical_operation = rule_utils.transform_child_to_logical_operation(child, self.node_store)
                         result = solver.solve_rule(logical_operation)
                         self.node_store.set_state(node.name, result[0])
                         return result[0], visualize
+
                     elif any([unknown_node.child == [] and unknown_node.state is None for unknown_node in unknown_nodes]):
                         for unknown_node in unknown_nodes:
                             if unknown_node.child == []:
                                 self.node_store.set_state(unknown_node.name, False)
                     else:
+                        # search subgoal
                         for unknown_node in unknown_nodes:
                             searched_subgoal_value, _ = self.backward_chaining(unknown_node.name)
                             self.node_store.set_state(unknown_node.name, searched_subgoal_value)
