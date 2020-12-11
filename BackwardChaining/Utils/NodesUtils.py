@@ -5,7 +5,7 @@ from BackwardChaining.Models.NodeStore import *
 
 class Node_Store_Utils:
     # operator symbols
-    __operators = ["+", "=>", "|", "^", "!"]
+    __operators = ["+", "=>", "|", "^", "!", ")", "("]
 
     '''@input: rules list 2d array
                facts (node name which state is true)
@@ -61,12 +61,11 @@ class Node_Store_Utils:
         for rule in rules_list:
             splited_rule = rule.split()
             for node in splited_rule:
-                if node not in self.__operators:
+                if node not in self.__operators and node not in unique_node:
                     if pattern.match(node):
                         unique_node.append(node)
                         continue
-                    if pattern_with_not.match(node):
-                        unique_node.append(node[1])
+
 
         return unique_node
 

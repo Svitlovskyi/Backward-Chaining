@@ -1,12 +1,15 @@
 '''Save list of unique atom nodes'''''
 from BackwardChaining.Models.Nodes import AtomNode
-
+'''
+Node format 
+[Name: [State: III,  Child: III]]
+'''
+import time
 
 class NodeStore:
 
     def __init__(self, initialized_unique_atoms):
         self.atom_node_list = initialized_unique_atoms
-
     '''@input: name of node, child of node, 
         set child for node 
     '''
@@ -41,12 +44,10 @@ class NodeStore:
             if node.name == name:
                 return node
 
-        raise Exception("Node with '{}', doesnt exists".format(name))
 
     '''@input: name of node, new state of node'''
 
     def set_state(self, name, state):
         index = self.__get_node_index(name)
         self.atom_node_list[index].state = state
-
 

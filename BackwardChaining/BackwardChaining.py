@@ -13,19 +13,23 @@ class Backward_Chaining:
             if node.name == goal:
                 while True:
                     child = node.child
-                    rule_utils = RulesUtils()
-                    is_all_node_know, unknown_node = rule_utils.check_is_all_node_is_known(child, self.node_store)
+                    if node.name in child:
+                        raise Exception("Prerequisite can't be a consequence at the same time")
 
-                    if node.state == True or node.state == False:
+                    rule_utils = RulesUtils()
+                    is_all_node_know, unknown_nodes = rule_utils.check_is_all_node_is_known(child, self.node_store)
+
+                    if node.state != None:
                         return node.state
                     if is_all_node_know:
                         solver = Solver()
                         logical_operation = rule_utils.transform_child_to_logical_operation(child, self.node_store)
                         i = solver.solve_rule(logical_operation)
                         return i
-                    elif unknown_node.child == []:
-                        self.node_store.set_state(unknown_node.name, False)
+                    elif not all([unknown_node.state == [] for unknown_node in unknown_nodes]):
+                        for unknown_node in unknown_nodes:
+                            self.node_store.set_state(unknown_node.name, False)
                     else:
-                        searched_subgoal_value = self.backward_chaining(unknown_node.name)
-                        self.node_store.set_state(unknown_node.name, searched_subgoal_value)
-
+                        for unknown_node in unknown_nodes:
+                            searched_subgoal_value = self.backward_chaining(unknown_node.name)
+                            self.node_store.set_state(unknown_node.name, searched_subgoal_value)

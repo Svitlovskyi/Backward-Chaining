@@ -1,16 +1,19 @@
 class RulesUtils:
-    __operators = ["+", "=>", "|", "^", "!"]
+    __operators = ["+", "=>", "|", "^", "!", "(", ")"]
 
     '''@input: child of node, current node store
        @return: bool and unknown node (or none, if all node is known)
     '''
     def check_is_all_node_is_known(self, child, node_store):
-        unknown_node = None
+        unknown_nodes = []
         for node in child:
             if node not in self.__operators:
-                if node_store.get_node(node).state == None:
-                    return False, node_store.get_node(node)
-        return True, unknown_node
+                init_node_from_child = node_store.get_node(node)
+                if init_node_from_child.state == None:
+                    unknown_nodes.append(init_node_from_child)
+        if len(unknown_nodes) > 0:
+            return False, unknown_nodes
+        return True, None
 
     '''@input: child, node store
        @return: transformed node name in logical operation to values

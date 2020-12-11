@@ -1,23 +1,13 @@
 #AND conditions and conclusions
 #The program can handle basic AND conditions, and AND conclusions.
-
-#Z => A
-#! A + B => K
-#! C | K => G
-
+# if z is false then A = TRUE
+A ^ B + ( D + G ) => C
+C | E => G
+G => K
+=BAE
+?GCK
 #if ! before operator -> error.
 
-! A ^ ! B => C
-# A and B are True, so C is False
-D ^ E => F
-# Only D is True, so F is True
-G ^ H => I
-# Only H is True, so I is True
-J ^ K => L
- # J and K are False, so J is False
-
-=ABDH
-?CFIL
 
 # assertions
 # =ABDHFI

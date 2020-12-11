@@ -1,8 +1,10 @@
 from Parser.Parser import *
 from BackwardChaining.Utils.NodesUtils import Node_Store_Utils
 from BackwardChaining.BackwardChaining import Backward_Chaining
+import sys
 
 if __name__ == '__main__':
+    sys.setrecursionlimit(10000)
     #Parse
     parser = Parser("Tests/Test")
     rules, facts, goals = parser.parse_file()
