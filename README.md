@@ -10,7 +10,7 @@ A + !B => C, A and not B inference C <br>
 Example: <br>
 A + B => C
 C | E => D
-
+B + ( C | E ) => G
 =AB <br>
 ?D <br>
 
