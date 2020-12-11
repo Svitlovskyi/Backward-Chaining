@@ -16,6 +16,7 @@ class Backward_Chaining:
                     if node.name in child:
                         raise Exception("Prerequisite can't be a consequence at the same time")
 
+                    
                     rule_utils = RulesUtils()
                     is_all_node_know, unknown_nodes = rule_utils.check_is_all_node_is_known(child, self.node_store)
 
@@ -26,9 +27,10 @@ class Backward_Chaining:
                         logical_operation = rule_utils.transform_child_to_logical_operation(child, self.node_store)
                         i = solver.solve_rule(logical_operation)
                         return i
-                    elif not all([unknown_node.state == [] for unknown_node in unknown_nodes]):
+                    elif all([unknown_node.child == [] for unknown_node in unknown_nodes]) and unknown_nodes != None:
                         for unknown_node in unknown_nodes:
-                            self.node_store.set_state(unknown_node.name, False)
+                            if unknown_node.child == []:
+                                self.node_store.set_state(unknown_node.name, False)
                     else:
                         for unknown_node in unknown_nodes:
                             searched_subgoal_value = self.backward_chaining(unknown_node.name)
