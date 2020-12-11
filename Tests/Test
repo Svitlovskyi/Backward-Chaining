@@ -7,7 +7,7 @@
 
 #if ! before operator -> error.
 
-A ^ B => C
+! A ^ ! B => C
 # A and B are True, so C is False
 D ^ E => F
 # Only D is True, so F is True
