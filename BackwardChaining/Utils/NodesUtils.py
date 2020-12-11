@@ -43,16 +43,17 @@ class Node_Store_Utils:
     def __set_child_of_atom_nodes(self, rules_list, node_store):
         for rule in rules_list:
             splitted = rule.split("=>")
-            rhs, lhs = splitted[0].split(), splitted[1].split()
-            if len(lhs) == 1:
-                node_store.set_child(lhs[0], rhs)
+            lhs, rhs = splitted[0].split(), splitted[1].split()
+
+            if len(rhs) == 1:
+                node_store.set_child(rhs[0], lhs)
             else:
-                for node in lhs:
+                for node in rhs:
                     if node in ["=>", "|", "^", "!", ")", "("]:
                         raise Exception("Not valid rules")
-                for node in lhs:
+                for node in rhs:
                     if node != "+":
-                        node_store.set_child(node, rhs)
+                        node_store.set_child(node, lhs)
 
             # TODO: ADD CHILD FOR COMPLEX LHS (A + B, etc)
 

@@ -27,12 +27,13 @@ class Backward_Chaining:
                         solver = Solver()
                         logical_operation = rule_utils.transform_child_to_logical_operation(child, self.node_store)
                         result = solver.solve_rule(logical_operation)
-                        return result, visualize
+                        self.node_store.set_state(node.name, result[0])
+                        return result[0], visualize
                     elif any([unknown_node.child == [] and unknown_node.state is None for unknown_node in unknown_nodes]):
                         for unknown_node in unknown_nodes:
                             if unknown_node.child == []:
                                 self.node_store.set_state(unknown_node.name, False)
                     else:
                         for unknown_node in unknown_nodes:
-                            searched_subgoal_value = self.backward_chaining(unknown_node.name)
+                            searched_subgoal_value, _ = self.backward_chaining(unknown_node.name)
                             self.node_store.set_state(unknown_node.name, searched_subgoal_value)

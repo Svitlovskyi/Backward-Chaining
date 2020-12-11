@@ -16,12 +16,23 @@ def main_func(text_name):
     backward_chaining = Backward_Chaining(node_store, goals)
     for i in goals:
         result, vis = backward_chaining.backward_chaining(i)
-        print(result)
-        print(vis)
+        return result, vis
 
 if __name__ == '__main__':
-    test = ["andTest", "bracketsTest", "notTest", "orTest", "xorTest"]
-    for i in test:
-        main_func(i)
+    test = {
+            "andTest": True,
+            "bracketsTest": True,
+            "notTest": True,
+            "orTest": True,
+            "xorTest": True,
+            "complexTest": False
+    }
+    result = []
+    vis = []
+    for key in test:
+        test_result, vis = main_func(key)
+        is_completed = (test_result == test[key])
+        print("test name: {}, completed: {}".format(key, is_completed))
+
 
 

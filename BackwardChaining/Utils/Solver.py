@@ -10,7 +10,7 @@ class Solver:
         if len(rule) != 0:
             while len(rule) != 1:
                 solved_rule = self.get_first_logical_operation(solved_rule)
-            return solved_rule[0]
+            return solved_rule
 
     '''@input: rule 
        @return: get first logical operation and solve it
@@ -19,7 +19,8 @@ class Solver:
     def get_first_logical_operation(self, rule):
         rule = self.solve_all_not(rule)
         rule = self.solve_brackets(rule)
-
+        if len(rule) == 1:
+            return rule
         for index, node in enumerate(rule):
             if node in self.__operators:
                 rule[index] = self.solve(node, rule[index - 1], rule[index + 1])
@@ -42,6 +43,7 @@ class Solver:
                 solved_brackets_value = self.solve_rule(brackets_values)
                 rule[index] = solved_brackets_value
                 return rule
+        return rule
 
     '''@input: rule
        @return: rule with solved not operator

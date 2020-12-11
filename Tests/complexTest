@@ -1,0 +1,11 @@
+# true
+A + B => C
+# true
+D ^ ! C + ( G + F ) => L + K
+# false
+L ^ K => Z
+
+Z | Y => R
+
+=ABDGF
+?R
