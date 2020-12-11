@@ -25,7 +25,3 @@ Symbols
 "=" Initial Facts (=ABC) <br>
 "#" Comment
 
-Algorithm
----
-
-Search goal <br`>
