@@ -1,6 +1,7 @@
 from Parser.Parser import *
 from BackwardChaining.Utils.NodesUtils import Node_Store_Utils
 from BackwardChaining.BackwardChaining import Backward_Chaining
+from BackwardChaining.Utils.Visualizer import Visualizer
 import sys
 
 
@@ -34,7 +35,8 @@ if __name__ == '__main__':
         is_completed = (test_result == test[key])
         print("test name: {}, completed: {}".format(key, is_completed))
         print(vis)
-
+        visual = Visualizer(vis)
+        visual.print_tree()
 
 #TODO: Rules parser check
 
