@@ -5,7 +5,7 @@ class Parser:
     def __init__(self, file_name):
         self.file_name = file_name
 
-    '''return: rules, facts and goals lines '''
+    '''@return: rules, facts and goals lines '''
     def parse_file(self):
         fileObject = open(self.file_name, mode='r')
         lines = fileObject.readlines()
@@ -16,9 +16,9 @@ class Parser:
             line = line.rstrip()
             if len(line) == 0:
                 continue
-            if line[0] == "#":
+            if line.split() in ["#"]:
                 continue
-            if line[0] == " ":
+            if line.isspace():
                 continue
             parsed_line.append(line)
 
