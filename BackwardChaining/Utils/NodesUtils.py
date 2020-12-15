@@ -55,7 +55,6 @@ class Node_Store_Utils:
                     if node != "+":
                         node_store.set_child(node, lhs)
 
-            # TODO: ADD CHILD FOR COMPLEX LHS (A + B, etc)
 
     '''private
         @input: rules list (2d array)

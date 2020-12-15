@@ -15,6 +15,8 @@ class Backward_Chaining:
             if node.name == goal:
                 while True:
                     child = node.child
+
+
                     if node.name in child:
                         raise Exception("Prerequisite can't be a consequence at the same time")
 

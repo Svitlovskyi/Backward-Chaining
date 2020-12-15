@@ -2,11 +2,9 @@ from Parser.Parser import *
 from BackwardChaining.Utils.NodesUtils import Node_Store_Utils
 from BackwardChaining.BackwardChaining import Backward_Chaining
 from BackwardChaining.Utils.Visualizer import Visualizer
-import sys
 
 
 def main_func(text_name):
-    sys.setrecursionlimit(10000)
     # Parse
     parser = Parser("Tests/{}".format(text_name))
     rules, facts, goals = parser.parse_file()
@@ -22,10 +20,15 @@ def main_func(text_name):
 if __name__ == '__main__':
     test = {
             "andTest": True,
+            "andTest2": False,
             "bracketsTest": True,
+            "bracketsTest2": False,
             "notTest": True,
+            "notTest2": False,
             "orTest": True,
+            "orTest2": True,
             "xorTest": True,
+            "xorTest2": False,
             "complexTest": False
     }
     result = []
@@ -33,10 +36,10 @@ if __name__ == '__main__':
     for key in test:
         test_result, vis = main_func(key)
         is_completed = (test_result == test[key])
-        print("test name: {}, completed: {}".format(key, is_completed))
-        print(vis)
-        visual = Visualizer(vis)
-        visual.print_tree()
+        print("test file name: {}, is test passed: {}".format(key, is_completed))
+        # print(vis)
+        # visual = Visualizer(vis)
+        # visual.print_tree()
 
 #TODO: Rules parser check
 
