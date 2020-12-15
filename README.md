@@ -8,10 +8,10 @@ A ^ B => C, A xor B inference C <br>
 A + ! B => C, A and not B inference C <br>
 ! A => B, Not A inference B <br>
 Example: <br>
-A + B => C
-C | E => D
-B + ( C | E ) => G
-=AB <br>
+A + B => C <br>
+C | E => D <br>
+B + ( C | E ) => G <br>
+=AB <br> 
 ?D <br>
 
 Symbols
